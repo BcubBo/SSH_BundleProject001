@@ -48,8 +48,12 @@ String path = request.getContextPath();
        <span style="display:none;"><iframe id="downloadIframe" src="" style="width:0px;height:0px;"></iframe></span>
 	          <!--增加报销单 区域 结束-->
        </div>
-       <div style=""><div align="left"> 
-       	  <center><img src="<%=path%>/jsp/statistics/deptStatistics_createDetailChart.action?currYear=<%=request.getAttribute("currYear")%>&departmentId=<%=request.getAttribute("departmentId")%>"></center></div>
+       <div style="">
+       <div align="left"> 
+       	  <center>
+       	  	<img src="<%=path%>/jsp/statistics/deptStatistics_createDetailChart.action?currYear=<%=request.getAttribute("currYear")%>&departmentId=<%=request.getAttribute("departmentId")%>" >
+       	  </center>
+       	</div>
        <%-- <img src="<%=path%>/jsp/statistics/claimVoucherStatistics_createDetailChart.action?year=<%=request.getAttribute("year")%>&amp;selectMonth=<%=request.getAttribute("selectMonth")%>&amp;departmentId=<%=request.getAttribute("departmentId")%>"> --%>
        </div>
        
