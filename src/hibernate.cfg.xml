@@ -4,7 +4,7 @@
 <hibernate-configuration>
  <session-factory name="">
   <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
-  <property name="connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
+  <property name="connection.url">jdbc:oracle:thin:@localhost:1521:bcubbo</property>
   <property name="connection.username">bcubbo3</property>
   <property name="connection.password">BcubBo001</property>
   <property name="connection.driver_class">oracle.jdbc.OracleDriver</property>

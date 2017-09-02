@@ -4,7 +4,7 @@
 	"D:\JARPack\struts2lib\struts-2.3.dtd">
 
 <struts>
-<!-- 	<constant name="struts.objectFactory.spring.autoWire" value="type"></constant> -->
+
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.i18n.encoding" value="utf-8"/>
@@ -12,10 +12,14 @@
     <constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>	
 	<!-- 字节 -->
 	<constant name="struts.multipart.maxSize" value="5000000"/>
-	<package name="login" namespace="/" extends="struts-default">
-		<action name="login" class="action.EmployeeAction" method="Login">
-			<result>/index.jsp</result>
-			<result name="input">/login.jsp</result>
-		</action>
+	<package name="default" namespace="/" extends="json-default">
+		<interceptors>
+			<interceptor name="charset" class="filter.CharSetFilter"></interceptor>
+			<interceptor-stack name="myinterceptorstack">
+				<interceptor-ref name="charset"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myinterceptorstack" />
 	</package>
 </struts>
