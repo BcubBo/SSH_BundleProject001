@@ -19,5 +19,38 @@
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
 	</bean>
-	<bean id="" class=""></bean>
+<!-- 	<bean id="employeeDao" class="dao.impl.EmployeeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean> -->
+	<bean id="employeeDao" class="dao.impl.EmployeeDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
+	<bean id="claimVoucherDao" class="dao.impl.ClaimVoucherDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
+	<bean id="employeeBiz" class="biz.impl.EmployeeBizImpl" p:employeeDao-ref="employeeDao"></bean>
+	<bean id="claimVoucherBiz" class="biz.impl.ClaimVoucherBizImpl" p:claimVoucherDao-ref="claimVoucherDao"></bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory">
+		
+	</bean>
+	<!-- 事务工作状态的描述并处理事务的内容的设置-->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	
+		<tx:attributes>
+			<tx:method name="find*" read-only="true"/>
+			<tx:method name="save*" read-only="true"/>
+			<tx:method name="add*"/>
+			<tx:method name="get*"/>
+			<tx:method name="update*"/>
+			<tx:method name="delete*"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	
+	</tx:advice>
+	<aop:config>
+	
+		<aop:pointcut expression="execution(public * biz..*(..))" id="serviceMethod"></aop:pointcut>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicMethod"></aop:advisor>
+	
+	
+	</aop:config>
+
+
 </beans>
