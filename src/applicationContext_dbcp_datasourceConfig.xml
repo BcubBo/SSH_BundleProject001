@@ -20,7 +20,7 @@
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:bcubbo"></property>
 		<property name="username" value="bcubbo3"></property>
 		<property name="password" value="BcubBo001"></property>
-		<property name="maxTotal" value="100"></property>
+		<property name="maxActive" value="100"></property>
 		<property name="maxIdle" value="10"></property>
 		<property name="maxWait" value="10000"></property>
 		
