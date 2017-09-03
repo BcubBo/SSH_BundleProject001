@@ -31,7 +31,7 @@
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-<!-- 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property> -->
+
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="hibernateProperties">
 			<!-- 参数 -->
@@ -44,50 +44,11 @@
 				<prop key="hibernate.use_sql_comments">true</prop>
 			</props>
 		</property>
-		<!-- 配置映射文件通过列举所有文件位置的方式 -->
-<!-- 		<property name="mappingResources">
-			<list>
-				<value>po/BizClaimVoucher.hbm.xml</value>
-				<value>po/BizCheckResult.hbm.xml</value>
-				<value>po/BizClaimVoucherDetail.hbm.xml</value>
-				<value>po/SysEmployee.hbm.xml</value>
-				<value>po/SysDepartment.hbm.xml</value>
-				<value>po/SysPosition.hbm.xml</value>
-			</list>
-		</property> -->
-		<!-- 简便方法,通过映射目录位置来查找配置文件 -->
-		<property name="mappingDirectoryLocations">
-			<list>
-				<value>classpath:po/</value>
-			</list>
-		</property>
-	</bean>
-<!-- 	<bean id="employeeDao" class="dao.impl.EmployeeDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean> -->
-	<bean id="employeeDao" class="dao.impl.EmployeeDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
-	<bean id="claimVoucherDao" class="dao.impl.ClaimVoucherDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
-	<bean id="employeeBiz" class="biz.impl.EmployeeBizImpl" p:sessionFactory-ref="sessionFactory" p:employeeDao-ref="employeeDao" ></bean>
-	<bean id="claimVoucherBiz" class="biz.impl.ClaimVoucherBizImpl" p:claimVoucherDao-ref="claimVoucherDao"></bean>
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory">
-	</bean>
 
-	<!-- 事务工作状态的描述并处理事务的内容的设置-->
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="find*" propagation="SUPPORTS" />
-			<tx:method name="save*" propagation="SUPPORTS" />
-			<tx:method name="add*" isolation="READ_COMMITTED"/>
-			<tx:method name="get*"/>
-			<tx:method name="update*" rollback-for="java.lang.Exception"/>
-			<tx:method name="delete*" no-rollback-for="java.lang.RuntimeException"/>
-			<tx:method name="*"/>
-		</tx:attributes>
-	</tx:advice>
-	<aop:config proxy-target-class="true">
-		<aop:pointcut expression="execution(public * biz..*(..))" id="serviceMethod" ></aop:pointcut>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod" ></aop:advisor>
-	</aop:config>
-
+	</bean>
+<!-- 	<import resource="classpath:applicationContext_dao.xml"/>
+	<import resource="classpath:applicationContext_biz.xml"/>
+	<import resource="classpath:applicationContext_action.xml"/> -->
+	
+	
 </beans>
