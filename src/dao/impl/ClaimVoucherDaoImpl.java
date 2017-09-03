@@ -23,27 +23,23 @@ public class ClaimVoucherDaoImpl extends HibernateDaoSupport implements ClaimVou
 	//save方法
 	
 	
-	public List<BizClaimVoucher> finByPage(int pageNo,int pageSize,BizClaimVoucher args){
-		
-		
+	public List<BizClaimVoucher> finByPage(final int pageNo,final int pageSize,final BizClaimVoucher args){
 		//return this.getHibernateTemplate().findByCriteria(null,1,1);
 		//模板和回调方法
-		
 		//return this.getHibernateTemplate().execute(new MyCallback());
 		//使用回调
-		
 		//使用匿名内部类
-		
 		return this.getHibernateTemplate().execute(
 				new HibernateCallback<List<BizClaimVoucher>>() {
+					@SuppressWarnings("unchecked")
 					public List<BizClaimVoucher> doInHibernate(Session arg0)throws HibernateException,SQLException{
 						//匿名内部类
-						return null;
+						return arg0.createQuery("from...")
+						.setFirstResult((pageNo-1)*pageSize)
+						.setMaxResults(pageSize)
+						.list();
 					}
-					
-					
 				}
-				
 			);
 		
 		
