@@ -12,12 +12,16 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+	<bean
+		class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+		<property name="locations" value="classpath:jdbc.properties"></property>
+	</bean>		
 	<!-- 配置dataSource -->
 	<!-- dbcp/c3po/proxool -->
 	<bean id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="oracle.jdbc.OracleDriver"></property>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:bcubbo"></property>
+		<property name="driverClass" value="${driver}"></property>
+		<property name="jdbcUrl" value="${url}"></property>
 		<property name="user" value="bcubbo3"></property>
 		<property name="password" value="BcubBo001"></property>
 		<property name="maxPoolSize" value="100"></property>
@@ -37,6 +41,7 @@
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.current_session_context_class">thread</prop>
 				<prop key="hibernate.default_schema">BCUBBO3</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
 			</props>
 		</property>
 		<!-- 配置映射文件通过列举所有文件位置的方式 -->
@@ -84,4 +89,5 @@
 		<aop:pointcut expression="execution(public * biz..*(..))" id="serviceMethod" ></aop:pointcut>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod" ></aop:advisor>
 	</aop:config>
+
 </beans>

@@ -1,12 +1,8 @@
 package action;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.opensymphony.xwork2.ActionContext;
 
 import biz.EmployeeBiz;
-import biz.impl.EmployeeBizImpl;
 import po.SysEmployee;
 
 public class EmployeeAction {
