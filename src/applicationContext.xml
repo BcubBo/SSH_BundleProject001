@@ -44,8 +44,14 @@
 				<prop key="hibernate.use_sql_comments">true</prop>
 			</props>
 		</property>
-
+		<!-- 简便方法,通过映射目录位置来查找配置文件 -->
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:po/</value>
+			</list>
+		</property>		
 	</bean>
+	
 	<import resource="classpath:applicationContext_dao.xml"/>
 	<import resource="classpath:applicationContext_biz.xml"/>
 	<import resource="classpath:applicationContext_action.xml"/>
