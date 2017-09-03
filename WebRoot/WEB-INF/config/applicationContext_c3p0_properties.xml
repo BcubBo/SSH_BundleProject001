@@ -20,7 +20,7 @@
 	<!-- dbcp/c3po/proxool -->
 	<bean id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="jdbc.oracle.OracleDriver"></property>
+		<property name="driverClass" value="oracle.jdbc.OracleDriver"></property>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:bcubbo"></property>
 		<property name="user" value="bcubbo3"></property>
 		<property name="password" value="BcubBo001"></property>
