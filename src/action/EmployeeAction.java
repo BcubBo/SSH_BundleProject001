@@ -15,8 +15,6 @@ public class EmployeeAction {
 	private SysEmployee employee;
 	private String message;
 	public String login() {
-		ApplicationContext acptx= new ClassPathXmlApplicationContext("applicationContext.xml");
-		employeeBiz = (EmployeeBizImpl) acptx.getBean("employeeBiz");
 		System.out.println(employeeBiz);
 		System.out.println("sn:"+employee.getSn());
 		System.out.println("pasword:"+employee.getPassword());
@@ -25,7 +23,7 @@ public class EmployeeAction {
 			this.message="用户名和密码错误!";
 			return "input";
 		}else {
-			System.out.println("返回值:"+ActionContext.getContext().getSession().get("employee"));
+			System.out.println("返回值:"+employee.getSn());
 			ActionContext.getContext().getSession().put("employee", result);
 			ActionContext.getContext().getSession().put("employee_position",result.getSysPosition().getNameCn());
 			return "success";

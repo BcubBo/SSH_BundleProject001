@@ -16,7 +16,7 @@
 	<!-- dbcp/c3po/proxool -->
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="oracle.jdbc.oracleDriver"></property>
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:bcubbo"></property>
 		<property name="username" value="bcubbo3"></property>
 		<property name="password" value="BcubBo001"></property>
@@ -64,6 +64,7 @@
 	<bean id="claimVoucherDao" class="dao.impl.ClaimVoucherDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
 	<bean id="employeeBiz" class="biz.impl.EmployeeBizImpl" p:sessionFactory-ref="sessionFactory" p:employeeDao-ref="employeeDao" ></bean>
 	<bean id="claimVoucherBiz" class="biz.impl.ClaimVoucherBizImpl" p:claimVoucherDao-ref="claimVoucherDao"></bean>
+	<bean id="bizaAction" class="action.EmployeeAction" ></bean>
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory">
 	</bean>
@@ -71,12 +72,12 @@
 	<!-- 事务工作状态的描述并处理事务的内容的设置-->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="find*" read-only="true"/>
-			<tx:method name="save*" read-only="true"/>
-			<tx:method name="add*"/>
+			<tx:method name="find*" propagation="SUPPORTS" />
+			<tx:method name="save*" propagation="SUPPORTS" />
+			<tx:method name="add*" isolation="READ_COMMITTED"/>
 			<tx:method name="get*"/>
-			<tx:method name="update*"/>
-			<tx:method name="delete*"/>
+			<tx:method name="update*" rollback-for="java.lang.Exception"/>
+			<tx:method name="delete*" no-rollback-for="java.lang.RuntimeException"/>
 			<tx:method name="*"/>
 		</tx:attributes>
 	</tx:advice>
