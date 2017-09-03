@@ -39,7 +39,8 @@
 				<prop key="hibernate.default_schema">BCUBBO3</prop>
 			</props>
 		</property>
-		<property name="mappingResources">
+		<!-- 配置映射文件通过列举所有文件位置的方式 -->
+<!-- 		<property name="mappingResources">
 			<list>
 				<value>po/BizClaimVoucher.hbm.xml</value>
 				<value>po/BizCheckResult.hbm.xml</value>
@@ -47,6 +48,12 @@
 				<value>po/SysEmployee.hbm.xml</value>
 				<value>po/SysDepartment.hbm.xml</value>
 				<value>po/SysPosition.hbm.xml</value>
+			</list>
+		</property> -->
+		<!-- 简便方法,通过映射目录位置来查找配置文件 -->
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:po/</value>
 			</list>
 		</property>
 	</bean>
