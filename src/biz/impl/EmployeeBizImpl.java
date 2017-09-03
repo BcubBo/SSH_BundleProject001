@@ -1,12 +1,10 @@
 package biz.impl;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import biz.EmployeeBiz;
 import dao.EmployeeDao;
 import po.SysEmployee;
 
-public class EmployeeBizImpl extends HibernateDaoSupport implements EmployeeBiz {
+public class EmployeeBizImpl  implements EmployeeBiz {
 	
 	private EmployeeDao employeeDao;
 	
