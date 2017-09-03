@@ -8,7 +8,7 @@ import dao.EmployeeDao;
 import po.SysEmployee;
 
 public class EmployeeDaoImpl extends HibernateDaoSupport implements EmployeeDao {
-
+	
 	@Override
 	public SysEmployee findById(Serializable sn) {
 		

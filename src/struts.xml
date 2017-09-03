@@ -5,16 +5,16 @@
 
 <struts>
 <!-- 	<constant name="struts.objectFactory.spring.autoWire" value="type"></constant> -->
-	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="true" /> -->
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.i18n.encoding" value="utf-8"/>
     <constant name="struts.cofiguration.xml.reload" value="true"></constant>
-    <constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>	
+   <!--  <constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant> -->	
 	<!-- 字节 -->
 	<constant name="struts.multipart.maxSize" value="5000000"/>
 	<package name="login" namespace="/" extends="struts-default">
-		<action name="login" class="action.EmployeeAction" method="Login">
-			<result>/index.jsp</result>
+		<action name="login" class="action.EmployeeAction" method="login">
+			<result name="success">/index.jsp</result>
 			<result name="input">/login.jsp</result>
 		</action>
 	</package>

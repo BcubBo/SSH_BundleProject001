@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -27,6 +27,7 @@
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory">
 	</bean>
+
 	<!-- 事务工作状态的描述并处理事务的内容的设置-->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
@@ -39,8 +40,8 @@
 			<tx:method name="*"/>
 		</tx:attributes>
 	</tx:advice>
-	<aop:config>
-		<aop:pointcut expression="execution(public * biz..*(..))" id="serviceMethod"></aop:pointcut>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"></aop:advisor>
+	<aop:config proxy-target-class="true">
+		<aop:pointcut expression="execution(public * biz..*(..))" id="serviceMethod" ></aop:pointcut>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod" ></aop:advisor>
 	</aop:config>
 </beans>

@@ -11,6 +11,11 @@
 <filter>
 	<filter-name>OpenSessionInViewFilter</filter-name>
 	<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	<!-- 防止会话工厂的id值设置错误非默认的方法 -->
+<!-- 	<init-param>
+		<param-name>sessionFactoryBeanName</param-name>
+		<param-value>SessionFactory</param-value>
+	</init-param> -->
 </filter>
 <filter-mapping>
 	<filter-name>OpenSessionInViewFilter</filter-name>
