@@ -1,7 +1,12 @@
 package dao.impl;
 
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import dao.ClaimVoucherDao;
@@ -17,7 +22,36 @@ public class ClaimVoucherDaoImpl extends HibernateDaoSupport implements ClaimVou
 	}
 	//save方法
 	
-	public void show(int i ,String...values) {
+	
+	public List<BizClaimVoucher> finByPage(int pageNo,int pageSize,BizClaimVoucher args){
+		
+		
+		//return this.getHibernateTemplate().findByCriteria(null,1,1);
+		//模板和回调方法
+		
+		//return this.getHibernateTemplate().execute(new MyCallback());
+		//使用回调
+		
+		//使用匿名内部类
+		
+		return this.getHibernateTemplate().execute(
+				new HibernateCallback<List<BizClaimVoucher>>() {
+					public List<BizClaimVoucher> doInHibernate(Session arg0)throws HibernateException,SQLException{
+						//匿名内部类
+						return null;
+					}
+					
+					
+				}
+				
+			);
+		
+		
+	}
+	
+
+	
+/*	public void show(int i ,String...values) {
 		
 		this.getHibernateTemplate().bulkUpdate("queryString ? ? ?",1,"a","b");
 		this.getHibernateTemplate().clear();
@@ -34,7 +68,12 @@ public class ClaimVoucherDaoImpl extends HibernateDaoSupport implements ClaimVou
 		//通过Criteria查询
 		this.getHibernateTemplate().findByExample(null);
 		//通过简单对象查询，提取对象中的包含值的属性，但是不考虑主键和外键，而且条件运算符有限制。只能为==或者为like大于或者小于不适用
-		
-	}
+		this.getHibernateTemplate().findByNamedQuery(null);
+		//通过命名查询
+		this.getHibernateTemplate().findByNamedParam("from :name", new String[] {"1","2"}, null);
+		//:name的形式的占位符，查询通过名称参数进行
+		this.getHibernateTemplate().flush();
+		//立即执行清理缓存的操作
+	}*/
 
 }
