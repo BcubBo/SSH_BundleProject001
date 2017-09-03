@@ -12,7 +12,9 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-	
+	<!-- 配置dataSource -->
+	<!-- dbcp/c3po/proxool -->
+	<bean id="dataSource" class=""></bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
