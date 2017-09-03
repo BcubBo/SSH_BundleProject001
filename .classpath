@@ -66,5 +66,6 @@
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/commons-dbcp2-2.1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/commons-pool2-2.4.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/struts2-spring-plugin-2.5.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/c3p0-0.9.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

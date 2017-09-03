@@ -15,14 +15,14 @@
 	<!-- 配置dataSource -->
 	<!-- dbcp/c3po/proxool -->
 	<bean id="dataSource"
-		class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="oracle.jdbc.OracleDriver"></property>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:bcubbo"></property>
-		<property name="user" value="bcubbo3"></property>
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:bcubbo"></property>
+		<property name="username" value="bcubbo3"></property>
 		<property name="password" value="BcubBo001"></property>
-		<property name="maxPoolSize" value="100"></property>
-		<property name="minPoolSize" value="10"></property>
-		<property name="checkoutTimeout" value="10000"></property>	
+		<property name="maxTotal" value="100"></property>
+		<property name="maxIdle" value="10"></property>
+		<property name="maxWaitMillis" value="10000"></property>	
 		
 	</bean>
 	<bean id="sessionFactory"
