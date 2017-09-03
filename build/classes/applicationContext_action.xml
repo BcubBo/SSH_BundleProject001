@@ -12,10 +12,10 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-<bean id="bizaAction" class="action.XxxxAction" scope="prototype">
+<!-- <bean id="bizaAction" class="action.XxxxAction" scope="prototype">
 	<property name="biz" ref="bizaClaimVoucherBiz"></property>
 </bean>
 <bean id="bizbAction" class="action.XxxxAction" scope="request">
 	<property name="biz" ref="bizbClaimVoucherBiz"></property>
-</bean>
+</bean> -->
 </beans>

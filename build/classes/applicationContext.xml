@@ -12,16 +12,16 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-	<bean
+<!-- 	<bean
 		class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
 		<property name="locations" value="classpath:jdbc.properties"></property>
-	</bean>		
+	</bean>	 -->	
 	<!-- 配置dataSource -->
 	<!-- dbcp/c3po/proxool -->
 	<bean id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="${driver}"></property>
-		<property name="jdbcUrl" value="${url}"></property>
+		<property name="driverClass" value="oracle.jdbc.OracleDriver"></property>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:bcubbo"></property>
 		<property name="user" value="bcubbo3"></property>
 		<property name="password" value="BcubBo001"></property>
 		<property name="maxPoolSize" value="100"></property>
@@ -46,9 +46,9 @@
 		</property>
 
 	</bean>
-<!-- 	<import resource="classpath:applicationContext_dao.xml"/>
+	<import resource="classpath:applicationContext_dao.xml"/>
 	<import resource="classpath:applicationContext_biz.xml"/>
-	<import resource="classpath:applicationContext_action.xml"/> -->
+	<import resource="classpath:applicationContext_action.xml"/>
 	
 	
 </beans>
